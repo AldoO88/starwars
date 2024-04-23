@@ -1,13 +1,23 @@
-
+import { Route, Routes } from 'react-router-dom';
 import './App.css';
+import Home from './pages/Home';
+import People from './pages/People';
+import NavBar from './components/Navbar';
+import Films from './pages/Films';
+import Planets from './pages/Planets';
 
 function App() {
   return (
-    <div className="h-screen bg-orange-500 p-8 flex flex-col items-center justify-center">
-      <h1 className="text-3xl font-bold text-white">¡Hola Tailwind CSS!</h1>
-      <p className="mt-4 text-white">
-        Tailwind CSS es increíblemente poderoso. ¡No puedo esperar para seguir explorándolo!
-      </p>
+    <div className="flex flex-col items-center">
+      <NavBar/>
+      <Routes>
+        <Route path="/" element={<Home/>}/> 
+        <Route path='/films' element={<Films/>}/>
+        <Route path='/people' element={<People/>}/>
+        <Route path='/planets' element={<Planets/>}/>
+      </Routes>
+
+      
     </div>
   );
 }
