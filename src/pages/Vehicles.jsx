@@ -4,25 +4,29 @@ import { baseUrl } from "../utils/constants";
 import Card from "../components/Card"
 import Pagination from "../components/Pagination";
 
-const People = () => {
-    
+
+
+const Vehicles = () => {
+
     const [ page, setPage ] = useState(1)
-    const [ people, setPeople ] = useState([])
+    const [ vehicles, setVehicles ] = useState([])
     const [ loading, setLoading ] = useState(false);
     const [ error, setError ] = useState(null);
     const [ info, setInfo ] = useState([]);
-    const URL = baseUrl  + `/people/?page=${page}`;
+
+    const URL = baseUrl  + `/vehicles/?page=${page}`;
 
     useEffect(() => {
-        const fetchPeople = async () => {
+        const fetchVehicles = async () => {
             try {
-                const peoples = await axios.get(URL);
-                const result = await peoples.data;
+                const vehicles = await axios.get(URL);
+                const result = await vehicles.data;
                 
                 if(result){
-                    setPeople(result.results);
+                    setVehicles(result.results);
                     setLoading(false);
                     setInfo(result);
+                
                 }
                 
             } catch (error) {
@@ -31,9 +35,8 @@ const People = () => {
             }
            
         };
-        fetchPeople();
-    },[URL]);
-
+        fetchVehicles();
+    }, [URL]);
 
     return(
         <>
@@ -42,29 +45,29 @@ const People = () => {
                 loading || error ? (
                     <span className="text-white">loading....</span>
                 ) : (
-                    people.map((people,index) => (
+                    vehicles.map((vehicle, index) => (
                     
                             <Card
                                 key={index}
-                                name={people.name}
-                                gender={people.gender}
-                                height={people.height}
+                                name={vehicle.name}
+                                gender={vehicle.model}
+                                height={vehicle.vehicle_class}
                             />
                         
                     ))
 
                 )
-               
+                
             }
+           
           
             </div>
             <div>
-                <Pagination setPage={setPage} info={info} />
+                <Pagination  setPage={setPage} info={info}/>
             </div>
             </>
-            
 
     );
 }
 
-export default People;
+export default Vehicles;

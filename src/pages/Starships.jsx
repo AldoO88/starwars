@@ -4,23 +4,23 @@ import { baseUrl } from "../utils/constants";
 import Card from "../components/Card";
 import Pagination from "../components/Pagination";
 
-const Planets = () => {
+const Starships = () => {
   const [page, setPage] = useState(1);
-  const [planets, setPlanets] = useState([]);
+  const [starships, setStarships] = useState([]);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
   const [info, setInfo] = useState([]);
 
-  const URL = baseUrl + `/planets/?page=${page}`;
+  const URL = baseUrl + `/starships/?page=${page}`;
 
   useEffect(() => {
-    const fetchPlanets = async () => {
+    const fetchStarships = async () => {
       try {
-        const planets = await axios.get(URL);
-        const result = await planets.data;
+        const starships = await axios.get(URL);
+        const result = await starships.data;
 
         if (result) {
-          setPlanets(result.results);
+          setStarships(result.results);
           setLoading(false);
           setInfo(result);
         }
@@ -29,7 +29,7 @@ const Planets = () => {
         setError(error.message);
       }
     };
-    fetchPlanets();
+    fetchStarships();
   }, [URL]);
 
   return (
@@ -38,12 +38,12 @@ const Planets = () => {
         {loading || error ? (
           <span className="text-white">loading....</span>
         ) : (
-          planets.map((planet, index) => (
+          starships.map((starship, index) => (
             <Card
               key={index}
-              name={planet.name}
-              gender={planet.diameter}
-              height={planet.terrain}
+              name={starship.name}
+              gender={starship.model}
+              height={starship.starship_class}
             />
           ))
         )}
@@ -55,4 +55,4 @@ const Planets = () => {
   );
 };
 
-export default Planets;
+export default Starships;

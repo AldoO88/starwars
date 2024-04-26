@@ -14,13 +14,13 @@ const NavBar = () => {
             <NavLink to="/planets">
                 <button className="m-2 bg-yellow-500 hover:bg-yellow-600 text-gray-100 font-bold py-2 px-4 rounded-lg shadow">Planets</button>
             </NavLink>
-            <NavLink to="">
+            <NavLink to="/species">
                 <button className="m-2 bg-yellow-500 hover:bg-yellow-600 text-gray-100 font-bold py-2 px-4 rounded-lg shadow">Species</button>
             </NavLink>
-            <NavLink to="">
+            <NavLink to="/starships">
                 <button className="m-2 bg-yellow-500 hover:bg-yellow-600 text-gray-100 font-bold py-2 px-4 rounded-lg shadow">Starships</button>
             </NavLink>
-            <NavLink to="">
+            <NavLink to="/vehicles">
                 <button className="m-2 bg-yellow-500 hover:bg-yellow-600 text-gray-100 font-bold py-2 px-4 rounded-lg shadow">Vehicles</button>
             </NavLink>
 
